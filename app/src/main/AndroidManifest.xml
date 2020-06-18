@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="dominando.android.ex20_provider">
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <!--
+            https://developer.android.com/guide/topics/manifest/activity-element#lmode
+            Para evitar o empilhamento de activity e o uso do botão Voltar
+            adicionando a HotelActivity como parent(pai) da DetalheActivity
+            permite adicionar o botão Up (←) para voltar direto para a Activity pai
+
+            <meta-data> permite essa ação em versões anteriores ao Android 4 (API 16)
+
+            Depois no onCreate da DetalheActivity cocloque o seguinte:
+                getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+            Apesar de estar funcionando, uma nova instancia da HotelActivity é criada
+            para evitar adicione: android:launcherMode="singleTop"
+            assim a antiga instancia será reutilizada;
+        -->
+        <activity
+            android:name=".ui.activities.DetalheActivity"
+            android:label="@string/title_activity_detalhe"
+            android:parentActivityName=".ui.activities.HotelActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="dominando.android.ex20_provider.ui.activities.HotelActivity" />
+        </activity>
+        <activity
+            android:name=".ui.activities.HotelActivity"
+            android:launchMode="singleTop">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <provider
+            android:authorities="dominando.android.ex22_provider.providers"
+            android:name=".providers.HotelProvider"
+            android:enabled="true"
+            android:exported="false"/>
+    </application>
+</manifest>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="dominando.android.ex20_provider.ui.activities.HotelActivity">
+
+    <!--
+        app: acabamos por utilizar, pois algumas propriedades são especificas da ActionBar
+                declaramos para serem reconhecidas em versões anteriores ao Android 3.
+        showAsAction="collapseActionView|always = ao clicar no item a View se expandirá na
+                                    própria ActionBar.
+        actionViewClass = Será definida a classe da View que sera exibida ao clicarmos no item.
+                          é comum a utilização de SearchBar, para efetuar pesquisas.
+    -->
+    <item
+        android:id="@+id/action_search"
+        android:title="@string/acao_pesquisar"
+        android:icon="@drawable/ic_action_search"
+        app:showAsAction="collapseActionView|always"
+        app:actionViewClass="androidx.appcompat.widget.SearchView"
+        />
+
+    <!--
+        sempre na action bar e exibindo o texto se possivel...
+    -->
+    <item android:id="@+id/action_new"
+        android:title="@string/acao_novo"
+        android:icon="@drawable/ic_action_new"
+        app:showAsAction="always|withText"/>
+    <!--
+        ficará escondido no overflow menu
+    -->
+    <item
+        android:id="@+id/action_info"
+        android:title="@string/acao_info"
+        android:icon="@drawable/ic_action_info"
+        app:showAsAction="never"
+        />
+</menu>
